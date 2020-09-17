@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="runtime-exec-encoder:jar">
+    <output-path>$PROJECT_DIR$/../exploit-gui/plugin</output-path>
+    <root id="archive" name="runtime-exec-encoder.jar">
+      <element id="module-output" name="runtime-exec-encoder" />
+    </root>
+  </artifact>
+</component>
