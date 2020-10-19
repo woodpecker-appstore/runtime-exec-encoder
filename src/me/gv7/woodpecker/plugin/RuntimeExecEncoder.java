@@ -7,21 +7,23 @@ import me.gv7.woodpecker.plugin.payload.PythonCommandEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RuntimeExecEncoder implements IPlugin {
-    public static IExtenderCallbacks callbacks;
+public class RuntimeExecEncoder implements IHelperPlugin {
+    public static IHelperPluginCallbacks callbacks;
     public static IPluginHelper pluginHelper;
 
-    public void PluginMain(IExtenderCallbacks callbacks) {
-        this.callbacks = callbacks;
+
+    @Override
+    public void HelperPluginMain(IHelperPluginCallbacks iHelperPluginCallbacks) {
+        this.callbacks = iHelperPluginCallbacks;
         this.pluginHelper = callbacks.getPluginHelper();
-        callbacks.setPluginName("Runtime.exec command encoder");
-        callbacks.setPluginVersion("0.1.0");
-        callbacks.setPluginAutor("c0ny1");
-        List<IPayloadGenerator> payloadGeneratorList = new ArrayList<IPayloadGenerator>();
-        payloadGeneratorList.add(new BashCommandEncoder());
-        payloadGeneratorList.add(new PowershellCommandEncoder());
-        payloadGeneratorList.add(new PythonCommandEncoder());
-        payloadGeneratorList.add(new PerlCommandEncoder());
-        callbacks.registerPayloadGenerator(payloadGeneratorList);
+        callbacks.setHelperPluginName("Runtime.exec command encoder");
+        callbacks.setHelperPluginVersion("0.1.0");
+        callbacks.setHelperPluginAutor("c0ny1");
+        List<IHelper> helperList = new ArrayList<IHelper>();
+        helperList.add(new BashCommandEncoder());
+        helperList.add(new PowershellCommandEncoder());
+        helperList.add(new PythonCommandEncoder());
+        helperList.add(new PerlCommandEncoder());
+        callbacks.registerHelper(helperList);
     }
 }

@@ -1,33 +1,35 @@
 package me.gv7.woodpecker.plugin.payload;
 
-import me.gv7.woodpecker.plugin.IArgs;
-import me.gv7.woodpecker.plugin.IPayloadGenerator;
-import me.gv7.woodpecker.plugin.IResultOutput;
-import me.gv7.woodpecker.plugin.RuntimeExecEncoder;
+import me.gv7.woodpecker.plugin.*;
 import sun.misc.BASE64Encoder;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PerlCommandEncoder implements IPayloadGenerator {
+public class PerlCommandEncoder implements IHelper {
 
-    public String getPayloadTabCaption() {
+    @Override
+    public String getHelperTabCaption() {
         return "Perl";
     }
 
-    public List<IArgs> getCutomArgs() {
+    @Override
+    public IArgsUsageBinder getHelperCutomArgs() {
+        IArgsUsageBinder argsUsageBinder = RuntimeExecEncoder.pluginHelper.createArgsUsageBinder();
         List<IArgs> args = new ArrayList<IArgs>();
         IArgs args1 = RuntimeExecEncoder.pluginHelper.createArgs();
         args1.setName("all");
         args1.setDefaultValue("whoami");
         args1.setDescription("command");
-        args1.setMastSetup(true);
+        args1.setRequired(true);
         args.add(args1);
-        return args;
+        argsUsageBinder.setArgsList(args);
+        return argsUsageBinder;
     }
 
-    public void generatorPayload(Map<String, String> customArgs, IResultOutput iResultOutput) {
+    @Override
+    public void doHelp(Map<String, String> customArgs, IResultOutput iResultOutput) {
         String cmd = customArgs.get("all");
         try {
             String payload = new BASE64Encoder().encode(cmd.getBytes()).replaceAll("\\s+","");
@@ -37,6 +39,5 @@ public class PerlCommandEncoder implements IPayloadGenerator {
             iResultOutput.rawPrintln(command);
             iResultOutput.rawPrintln("\n");
         }catch (Exception e){}
-
     }
 }
