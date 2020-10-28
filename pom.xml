@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>groupId</groupId>
+    <artifactId>runtime-exec-encoder</artifactId>
+    <version>0.1.0</version>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <!-- maximize compatibility -->
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <!-- ignore noisy internal api warnings -->
+                    <compilerArgument>-XDignore.symbol.file</compilerArgument>
+                    <fork>true</fork>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>me.gv7.woodpecker</groupId>
+            <artifactId>woodpecker-sdk</artifactId>
+            <version>0.1.0.beta3</version>
+        </dependency>
+    </dependencies>
+</project>

@@ -18,7 +18,7 @@ public class RuntimeExecEncoder implements IHelperPlugin {
         this.pluginHelper = callbacks.getPluginHelper();
         callbacks.setHelperPluginName("Runtime.exec command encoder");
         callbacks.setHelperPluginVersion("0.1.0");
-        callbacks.setHelperPluginAutor("c0ny1");
+        callbacks.setHelperPluginAutor("c0ny1@woodpecker-framework");
         List<IHelper> helperList = new ArrayList<IHelper>();
         helperList.add(new BashCommandEncoder());
         helperList.add(new PowershellCommandEncoder());
