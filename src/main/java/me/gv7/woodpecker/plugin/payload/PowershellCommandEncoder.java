@@ -16,8 +16,8 @@ public class PowershellCommandEncoder implements IHelper {
     @Override
     public IArgsUsageBinder getHelperCutomArgs() {
         IArgsUsageBinder argsUsageBinder = RuntimeExecEncoder.pluginHelper.createArgsUsageBinder();
-        List<IArgs> args = new ArrayList<IArgs>();
-        IArgs args1 = RuntimeExecEncoder.pluginHelper.createArgs();
+        List<IArg> args = new ArrayList<IArg>();
+        IArg args1 = RuntimeExecEncoder.pluginHelper.createArg();
         args1.setName("all");
         args1.setDefaultValue("whoami");
         args1.setDescription("command");
@@ -28,8 +28,8 @@ public class PowershellCommandEncoder implements IHelper {
     }
 
     @Override
-    public void doHelp(Map<String, String> customArgs, IResultOutput iResultOutput) {
-        String cmd = customArgs.get("all");
+    public void doHelp(Map<String, Object> customArgs, IResultOutput iResultOutput) {
+        String cmd = (String)customArgs.get("all");
         try {
             String payload = new BASE64Encoder().encode(cmd.getBytes()).replaceAll("\\s+","");
             String command = String.format("powershell.exe -NonI -W Hidden -NoP -Exec Bypass -Enc %s",payload);

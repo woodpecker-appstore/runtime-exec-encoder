@@ -6,7 +6,7 @@
 
     <groupId>groupId</groupId>
     <artifactId>runtime-exec-encoder</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 
     <build>
         <plugins>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>me.gv7.woodpecker</groupId>
             <artifactId>woodpecker-sdk</artifactId>
-            <version>0.1.0.beta3</version>
+            <version>0.1.0.beta4</version>
         </dependency>
     </dependencies>
 </project>
