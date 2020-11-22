@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class BashCommandEncoder implements IHelper {
+public class BashCommand2Encoder implements IHelper {
     @Override
     public String getHelperTabCaption() {
-        return "Bash Base64 Encoder";
+        return "Bash IFS Encoder";
     }
 
     @Override
@@ -31,12 +31,13 @@ public class BashCommandEncoder implements IHelper {
     public void doHelp(Map<String, Object> customArgs, IResultOutput iResultOutput) {
         String cmd = (String)customArgs.get("all");
         try {
+            cmd = "sh -c '"+cmd+"'";
             String payload = new BASE64Encoder().encode(cmd.getBytes()).replaceAll("\\s+","");
-            String command = String.format("bash -c {echo,%s}|{base64,-d}|{bash,-i}",payload);
+            String command = String.format("/bin/bash -c echo${IFS}-n${IFS}%s|base64${IFS}-d|/bin/bash",payload);
+            iResultOutput.infoPrintln("不能包含双引号");
             iResultOutput.successPrintln("encode result:");
-            iResultOutput.rawPrintln("\n");
             iResultOutput.rawPrintln(command);
             iResultOutput.rawPrintln("\n");
-        }catch (Exception e){}
+        }catch (Exception ignored){}
     }
 }
