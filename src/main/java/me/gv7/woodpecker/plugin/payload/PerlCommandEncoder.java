@@ -1,7 +1,7 @@
 package me.gv7.woodpecker.plugin.payload;
 
 import me.gv7.woodpecker.plugin.*;
-import sun.misc.BASE64Encoder;
+import me.gv7.woodpecker.tools.codec.BASE64Encoder;
 
 import java.util.ArrayList;
 import java.util.List;

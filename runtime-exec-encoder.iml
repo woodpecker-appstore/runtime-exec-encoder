@@ -9,6 +9,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="woodpecker-sdk" />
+    <orderEntry type="library" name="Maven: me.gv7.woodpecker:woodpecker-sdk:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: me.gv7.woodpecker:woodpecker-tools:0.1.0.beta1" level="project" />
   </component>
 </module>
